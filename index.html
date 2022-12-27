@@ -1,0 +1,38 @@
+<html>
+  <meta name="viewport" content="width=device-width,minimum-scale=0.9,maximum-scale=1.0,user-scalable=no" />
+  <style type="text/css">
+    body{
+      text-align: center;
+      overflow: hidden;
+      padding-top: 40px;
+    }
+    #hell{
+      width: 50%;
+    }
+    
+    #para{
+      font-size: 60px;
+      margin-top: 40px;
+    }
+    
+    h2{
+      background: tomato;
+      color: #fff;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+  <body>
+    <h2 id="notice">Hold your device and move it in infinity symbol's path to get accuracy.
+    </h2>
+    <img src="needle.png" id="hell"/>
+    <p id="para"></p>
+  <script type="text/javascript" charset="utf-8">
+  window.addEventListener('deviceorientation',(e) => {
+    document.getElementById('para').innerHTML = e.alpha.toFixed(1);
+    document.getElementById('hell').style.transform = 'rotateZ('+Math.round(e.alpha)+'deg)';
+  });
+  setTimeout(()=>{document.getElementById('notice').remove();},5000);
+  </script>
+  </body>
+</html>
